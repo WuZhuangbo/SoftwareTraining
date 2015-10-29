@@ -89,6 +89,16 @@
     #define GPIO_BAT_LED_PIN        GPIO_PIN_0
 #endif
 
+#if defined(PERIPHER_DEBUG)
+		//UART TX and RX GPIO defined
+		#define GPIO_UART_PORT   		GPIO_PORT_0
+		#define GPIO_UART_PIN_TX    GPIO_PIN_4
+		#define GPIO_UART_PIN_RX    GPIO_PIN_5
+		
+		#define GPIO_UART_TX        GPIO_UART_PORT,GPIO_UART_PIN_TX
+		#define GPIO_UART_RX        GPIO_UART_PORT,GPIO_UART_PIN_RX
+#endif//PERIPHER_DEBUG
+
 /*
  * FUNCTION DECLARATIONS
  ****************************************************************************************

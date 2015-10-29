@@ -42,6 +42,9 @@
 
 /*Misc*/
 
+/*used to debug the peripherals*/
+#define PERIPHER_DEBUG
+
 /* Application Definition. Project's configuration */
 #define CFG_APP_PROXR 
 
@@ -65,14 +68,14 @@
 #define BLE_CONNECTION_MAX_USER 1
 
 /*Build for OTP or JTAG*/
-#define DEVELOPMENT_DEBUG     1       //0: code at OTP, 1: code via JTAG
+#define DEVELOPMENT_DEBUG     0       //0: code at OTP, 1: code via JTAG
 /*Application boot from OTP memory - Bootloader copies OTP Header to sysRAM */
 #undef APP_BOOT_FROM_OTP
 /*NVDS struture is padded with 0 - NVDS struture data must be written in OTP in production procedure*/
 #undef READ_NVDS_STRUCT_FROM_OTP
 
 /*Low power clock selection*/
-#define CFG_LP_CLK              0x00    //0x00: XTAL32, 0xAA: RCX20, 0xFF: Select from OTP Header
+#define CFG_LP_CLK              0xAA    //0x00: XTAL32, 0xAA: RCX20, 0xFF: Select from OTP Header
 
 /*Fab Calibration - Must be defined for calibrated devices*/
 #undef CFG_CALIBRATED_AT_FAB  

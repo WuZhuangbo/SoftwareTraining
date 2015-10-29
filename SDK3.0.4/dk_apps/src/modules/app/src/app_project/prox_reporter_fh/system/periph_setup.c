@@ -29,6 +29,10 @@
 #ifndef _PERIPH_SETUP_H_
 #define _PERIPH_SETUP_H_
 
+#if defined(PERIPHER_DEBUG)
+		uint8_t dataArray[4] = {0x00,0x01,0x02,0x03};
+#endif//
+
 /**
  ****************************************************************************************
  * @brief Each application reserves its own GPIOs here.
@@ -100,6 +104,12 @@ void set_pad_functions(void)        // set gpio port function mode
     GPIO_ConfigurePin( GPIO_PORT_0, GPIO_PIN_6, OUTPUT, PID_SPI_DO, false );	
     GPIO_ConfigurePin( GPIO_PORT_0, GPIO_PIN_5, INPUT, PID_SPI_DI, false );
 #endif
+
+#if defined(PERIPHER_DEBUG)
+//Declaration that UART TX and RX GPIO as OUTPUT or INPUT
+GPIO_ConfigurePin(GPIO_UART_TX, OUTPUT, PID_UART1_TX, false );//declaration that IO as OUTPUT
+GPIO_ConfigurePin(GPIO_UART_RX, INPUT, PID_UART1_RX, false );//declaration that IO as INPUT
+#endif//
 }
 
 
@@ -142,6 +152,12 @@ void periph_init(void)  // set i2c, spi, uart, uart2 serial clks
 #endif //BLE_BATTERY_SERVER
 
 #endif //BLE_APP_PRESENT
+
+#if defined(PERIPHER_DEBUG)
+		SetBits16(CLK_PER_REG, UART1_ENABLE, 1);//Enable the peripheral clock - always @16Mhz
+		uart_init(UART_BAUDRATE_9K6, 3);			  //initate the uart that baudrate is 9600,and 8 bits data len,1 stop bits,no parity.   
+		uart_write(dataArray, 4, NULL);					//send data to uart,look at the data by TX		
+#endif//
 
     // Enable the pads
 	SetBits16(SYS_CTRL_REG, PAD_LATCH_EN, 1);

@@ -56,7 +56,7 @@
 /// Divider for 19200 bits/s
 //#define UART_BAUDRATE_19K2          tbd
 /// Divider for 9600 bits/s
-//#define UART_BAUDRATE_9K6           tbd
+#define UART_BAUDRATE_9K6          104
 
 /// Baudrate used on the UART
 #ifndef CFG_ROM
