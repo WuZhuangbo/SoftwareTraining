@@ -30,3 +30,11 @@
 
 # Debug files
 *.dSYM/
+
+*.bak
+*.Administrator
+*.dep
+*.uvopt
+out
+.gitignore
+
